@@ -1,0 +1,135 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
+   <PATCH nodename="E:\projects files\Solihull\projection simulations\subpatches\car.v4p" systemname="car" filename="E:\projects files\Solihull\projection simulations\subpatches\car.v4p">
+   <BOUNDS type="Window" left="2190" top="510" width="9000" height="6000">
+   </BOUNDS>
+   <NODE systemname="ColladaFile (EX9.Geometry)" filename="%VVVV%\lib\nodes\plugins\ColladaLoader.dll" nodename="ColladaFile (EX9.Geometry)" componentmode="Hidden" id="5">
+   <BOUNDS type="Node" left="1395" top="1785" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filename" slicecount="1" encoded="0" values="..\Media\car.dae">
+   </PIN>
+   <PIN pinname="Coordinate system of source" slicecount="1" values="LeftHanded">
+   </PIN>
+   <PIN pinname="Source up axis" slicecount="1" values="Default">
+   </PIN>
+   <PIN pinname="Source right axis" slicecount="1" values="Default">
+   </PIN>
+   <PIN pinname="Source distance unit in meter" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Coordinate system of target" slicecount="1" values="LeftHanded">
+   </PIN>
+   <PIN pinname="Target up axis" slicecount="1" values="Default">
+   </PIN>
+   <PIN pinname="Target right axis" slicecount="1" values="Default">
+   </PIN>
+   <PIN pinname="Target distance unit in meter" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="COLLADA Model" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Mesh (EX9.Geometry Collada)" filename="%VVVV%\lib\nodes\plugins\ColladaLoader.dll" nodename="Mesh (EX9.Geometry Collada)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="1395" top="2310" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Opaque=1?" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Mesh" visible="1">
+   </PIN>
+   <PIN pinname="Transforms" visible="1">
+   </PIN>
+   <PIN pinname="COLLADA Model" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="COLLADA Model" dstnodeid="4" dstpinname="COLLADA Model">
+   </LINK>
+   <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="3">
+   <BOUNDS type="Node" left="2790" top="3390" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Transform In 1" visible="1">
+   </PIN>
+   <PIN pinname="Transform In 2" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Scale (Transform)" nodename="Scale (Transform)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="3045" top="1785" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Y" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Transform Out" dstnodeid="3" dstpinname="Transform In 2">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Transforms" dstnodeid="3" dstpinname="Transform In 1" linkstyle="VHV">
+   <LINKPOINT x="1620" y="2970">
+   </LINKPOINT>
+   <LINKPOINT x="2775" y="2970">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="Rotate (Transform)" nodename="Rotate (Transform)" componentmode="Hidden" id="1">
+   <BOUNDS type="Node" left="3045" top="1410" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Y" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Transform Out" dstnodeid="2" dstpinname="Transform In">
+   </LINK>
+   <NODE systemname="LFO (Animation)" nodename="LFO (Animation)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="3435" top="1035" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Period" slicecount="1" values="20">
+   </PIN>
+   <PIN pinname="Pause">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="1" dstpinname="Y">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="6" systemname="IOBox (Node)">
+   <BOUNDS type="Node" left="2805" top="3930" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2805" top="3930" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Transform Out|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="3" srcpinname="Transform Out" dstnodeid="6" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="7" systemname="IOBox (Node)">
+   <BOUNDS type="Node" left="1380" top="3930" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1380" top="3930" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Mesh">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Mesh" dstnodeid="7" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="8" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="3600" top="0" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3600" top="0" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Pause" encoded="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Pause">
+   </LINK>
+   </PATCH>
