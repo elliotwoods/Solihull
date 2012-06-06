@@ -3,7 +3,7 @@
    <BOUNDS type="Window" left="5850" top="1200" width="16815" height="13440">
    </BOUNDS>
    <NODE systemname="PreviewCoverage (ProjectorSimulation Simple)" filename="C:\kimchiandchips\VVVV.Research\VVVV.Nodes.ProjectorSimulation\PreviewCoverage (ProjectorSimulation Simple).v4p" nodename="PreviewCoverage (ProjectorSimulation Simple)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="2640" top="4305" width="4740" height="270">
+   <BOUNDS type="Node" left="2640" top="4305" width="5385" height="270">
    </BOUNDS>
    <BOUNDS type="Window" left="1725" top="5985" width="10425" height="6000">
    </BOUNDS>
@@ -23,6 +23,8 @@
    </PIN>
    <PIN pinname="brightness" visible="1">
    </PIN>
+   <PIN pinname="Light Direction XYZ">
+   </PIN>
    </NODE>
    <NODE systemname="Preview (ProjectorSimulation)" filename="C:\kimchiandchips\VVVV.Research\VVVV.Nodes.ProjectorSimulation\Preview (ProjectorSimulation).v4p" nodename="Preview (ProjectorSimulation)" componentmode="Hidden" id="3">
    <BOUNDS type="Node" left="900" top="2280" width="100" height="100">
@@ -34,7 +36,7 @@
    <PIN pinname="Color" visible="1" slicecount="6" values="|0.52000,0.76000,1.00000,1.00000|,|0.76000,0.52000,1.00000,1.00000|,|1.00000,0.52000,0.76000,1.00000|,|1.00000,0.76000,0.52000,1.00000|,|0.76000,1.00000,0.52000,1.00000|,|0.52000,1.00000,0.76000,1.00000|">
    </PIN>
    </NODE>
-   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InABox" id="4">
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InABox" id="4" stayontop="1">
    <BOUNDS type="Node" left="615" top="6885" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="615" top="6885" width="13560" height="6810">
@@ -114,6 +116,8 @@
    <PIN pinname="Render State" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="brightness" visible="1">
+   </PIN>
+   <PIN pinname="Light Direction XYZ" visible="1">
    </PIN>
    </NODE>
    <NODE systemname="RenderDepthMap (ProjectorSimulation Advanced)" filename="C:\kimchiandchips\VVVV.Research\VVVV.Nodes.ProjectorSimulation\RenderDepthMap (ProjectorSimulation Advanced).v4p" nodename="RenderDepthMap (ProjectorSimulation Advanced)" componentmode="Hidden" id="25">
@@ -340,26 +344,6 @@
    <PIN pinname="Factor" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="43" srcpinname="ViewProjection transform" dstnodeid="3" dstpinname="ViewProjection In">
-   </LINK>
-   <LINK srcnodeid="43" srcpinname="ViewProjection transform" dstnodeid="0" dstpinname="ViewProjection Transform" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="945" y="2408">
-   </LINKPOINT>
-   <LINKPOINT x="4935" y="2408">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="43" srcpinname="ViewProjection transform" dstnodeid="17" dstpinname="ViewProjection Transform" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="945" y="2558">
-   </LINKPOINT>
-   <LINKPOINT x="9150" y="2708">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="43" srcpinname="ViewProjection transform" dstnodeid="25" dstpinname="ViewProjection Transform" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="945" y="2018">
-   </LINKPOINT>
-   <LINKPOINT x="14970" y="2018">
-   </LINKPOINT>
-   </LINK>
    <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="44">
    <BOUNDS type="Node" left="11535" top="2505" width="100" height="100">
    </BOUNDS>
@@ -442,12 +426,6 @@
    <LINKPOINT x="15330" y="14378">
    </LINKPOINT>
    </LINK>
-   <LINK srcnodeid="43" srcpinname="Factor" dstnodeid="47" dstpinname="Factor" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="1950" y="7560">
-   </LINKPOINT>
-   <LINKPOINT x="15330" y="7560">
-   </LINKPOINT>
-   </LINK>
    <LINK srcnodeid="46" srcpinname="Y Output Value" dstnodeid="47" dstpinname="Projector resolution">
    </LINK>
    <LINK srcnodeid="44" srcpinname="Y Output Value" dstnodeid="47" dstpinname="Brightness" linkstyle="Bezier">
@@ -514,6 +492,70 @@
    <LINKPOINT x="1740" y="6465">
    </LINKPOINT>
    <LINKPOINT x="11415" y="6465">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="projectors-2x2" filename="..\..\..\Users\kimchips\Downloads\projectors-2x2.v4p" nodename="..\..\..\Users\kimchips\Downloads\projectors-2x2.v4p" componentmode="InAWindow" id="51">
+   <BOUNDS type="Node" left="885" top="1290" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Window" left="-2130" top="1860" width="13380" height="7305">
+   </BOUNDS>
+   <PIN pinname="ViewProjection transform" visible="1">
+   </PIN>
+   <PIN pinname="Factor" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="ViewProjection transform" dstnodeid="3" dstpinname="ViewProjection In">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="ViewProjection transform" dstnodeid="0" dstpinname="ViewProjection Transform" linkstyle="Bezier" hiddenwhenlocked="1">
+   <LINKPOINT x="945" y="2918">
+   </LINKPOINT>
+   <LINKPOINT x="4905" y="2918">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="ViewProjection transform" dstnodeid="17" dstpinname="ViewProjection Transform" linkstyle="Bezier" hiddenwhenlocked="1">
+   <LINKPOINT x="945" y="3143">
+   </LINKPOINT>
+   <LINKPOINT x="8850" y="3143">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="ViewProjection transform" dstnodeid="25" dstpinname="ViewProjection Transform" linkstyle="Bezier" hiddenwhenlocked="1">
+   <LINKPOINT x="945" y="2528">
+   </LINKPOINT>
+   <LINKPOINT x="14970" y="2528">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Factor" dstnodeid="47" dstpinname="Factor" linkstyle="Bezier" hiddenwhenlocked="1">
+   <LINKPOINT x="2205" y="8063">
+   </LINKPOINT>
+   <LINKPOINT x="15930" y="8063">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="52" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="6450" top="3240" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="6450" top="3240" width="795" height="720">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="3" values="0.02,-0.11,0.03">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Light Direction XYZ|" encoded="0">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="52" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Light Direction XYZ">
+   </LINK>
+   <LINK srcnodeid="52" srcpinname="Y Output Value" dstnodeid="17" dstpinname="Light Direction XYZ" linkstyle="Bezier" hiddenwhenlocked="1">
+   <LINKPOINT x="6510" y="4343">
+   </LINKPOINT>
+   <LINKPOINT x="10185" y="4343">
    </LINKPOINT>
    </LINK>
    </PATCH>
