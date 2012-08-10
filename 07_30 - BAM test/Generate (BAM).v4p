@@ -1,0 +1,275 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
+   <PATCH nodename="E:\project files\Solihull\07_30 - BAM test\Generate (BAM).v4p" systemname="Generate (BAM)" filename="E:\project files\Solihull\07_30 - BAM test\Generate (BAM).v4p">
+   <BOUNDS type="Window" left="5490" top="1005" width="15915" height="12390">
+   </BOUNDS>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="1">
+   <BOUNDS type="Node" left="3600" top="1200" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3600" top="1200" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Projector View|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="1050" top="405" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1050" top="405" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Mesh">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="3">
+   <BOUNDS type="Node" left="3090" top="405" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3090" top="405" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Combined Depth Map|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="4">
+   <BOUNDS type="Node" left="5550" top="405" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5550" top="405" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Depth Map Viewports|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InABox" id="8">
+   <BOUNDS type="Node" left="585" top="3615" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="585" top="3615" width="9075" height="5670">
+   </BOUNDS>
+   <BOUNDS type="Window" left="7800" top="11940" width="6240" height="5010">
+   </BOUNDS>
+   <PIN pinname="EX9 Out" visible="1">
+   </PIN>
+   <PIN pinname="Layers" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="View" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Projection" visible="1">
+   </PIN>
+   <PIN pinname="Windowed Depthbuffer Format" slicecount="1" values="D16">
+   </PIN>
+   <PIN pinname="Background Color" visible="1" slicecount="1" values="|0.00000,0.00000,0.00000,1.00000|">
+   </PIN>
+   </NODE>
+   <NODE systemname="DX9Texture (EX9.Texture)" nodename="DX9Texture (EX9.Texture)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="9600" top="9765" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Source" visible="1">
+   </PIN>
+   <PIN pinname="Format" slicecount="2" values="R32F,INTZ">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="EX9 Out" dstnodeid="9" dstpinname="Source">
+   </LINK>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="11">
+   <BOUNDS type="Node" left="7605" top="1260" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="7605" top="1260" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Sweet Spot View|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="12">
+   <BOUNDS type="Node" left="8580" top="1845" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8580" top="1845" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Sweet Spot Projection|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="13" systemname="IOBox (Node)">
+   <BOUNDS type="Node" left="9600" top="10320" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9600" top="10320" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|BAM Map|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Texture Out" dstnodeid="13" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="14" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="11685" top="3585" width="15285" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="11685" top="3585" width="3330" height="1410">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" encoded="0" values="|* changing PROJECTOR_COUNT inside the shader changes the number of projectors that will be used in the calculation of the BAM map. It will also disconnect these pins (*). Please reconnect View, Projection, Brightness and Viewports|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="15" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="3975" top="2715" width="405" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3975" top="2715" width="1635" height="300">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" encoded="0" values="&lt;-----(*)-----&gt;">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="9">
+   </PIN>
+   </NODE>
+   <NODE systemname="Generate (EX9.Effect)" filename="effects\Generate.fx" nodename="Generate (EX9.Effect)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="570" top="3045" width="6090" height="270">
+   </BOUNDS>
+   <PIN pinname="Mesh" visible="1">
+   </PIN>
+   <PIN pinname="Depth Map" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Projector ViewProjection Transforms" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Projector Viewport Lookup" visible="1" slicecount="2" values=",">
+   </PIN>
+   <PIN pinname="Projector View Transforms" visible="1" slicecount="2" values=",">
+   </PIN>
+   <PIN pinname="Projector Projection Transforms" visible="1" slicecount="2" values=",">
+   </PIN>
+   <PIN pinname="Projector Brightness" slicecount="2" values="0,0" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="Output Node" dstnodeid="0" dstpinname="Mesh">
+   </LINK>
+   <LINK srcnodeid="3" srcpinname="Output Node" dstnodeid="0" dstpinname="Depth Map">
+   </LINK>
+   <LINK srcnodeid="0" srcpinname="Layer" dstnodeid="8" dstpinname="Layers">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Output Node" dstnodeid="0" dstpinname="Projector ViewProjection Transforms">
+   </LINK>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="17">
+   <BOUNDS type="Node" left="4110" top="1710" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4110" top="1710" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Projector Projection|">
+   </PIN>
+   <PIN pinname="Output Node" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Output Node" dstnodeid="0" dstpinname="Projector View Transforms">
+   </LINK>
+   <LINK srcnodeid="17" srcpinname="Output Node" dstnodeid="0" dstpinname="Projector Projection Transforms">
+   </LINK>
+   <NODE id="26" systemname="Decompose (Transform Vector)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Decompose (Transform Vector)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
+   <PIN pinname="Transform In" visible="1" pintype="Input">
+   </PIN>
+   <PIN pinname="ScaleXYZ" visible="1" pintype="Output">
+   </PIN>
+   <PIN pinname="TranslateXYZ" visible="1" pintype="Output">
+   </PIN>
+   <BOUNDS type="Node" left="5565" top="900" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="2310" top="0" width="2400" height="1800">
+   </BOUNDS>
+   <BOUNDS type="Window" left="0" top="0" width="6000" height="4500">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" pintype="Configuration" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Window Handle" pintype="Output">
+   </PIN>
+   <PIN pinname="RotateXYZ" pintype="Output" visible="1">
+   </PIN>
+   <PIN pinname="Success" pintype="Output" visible="1">
+   </PIN>
+   <PIN pinname="ID" pintype="Output" visible="-1">
+   </PIN>
+   </NODE>
+   <NODE id="28" systemname="Transform (Transform 3d Vector)" nodename="Transform (Transform 3d Vector)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
+   <PIN pinname="Translate XYZ" visible="1" pintype="Input" slicecount="3" values="0,0,0">
+   </PIN>
+   <PIN pinname="Scale XYZ" visible="1" pintype="Input">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1" pintype="Output">
+   </PIN>
+   <BOUNDS type="Node" left="5085" top="1845" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" pintype="Configuration" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Transform In" pintype="Input" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Rotate XYZ" pintype="Input" visible="1" slicecount="3" values="0,0,0">
+   </PIN>
+   <PIN pinname="Center XYZ" pintype="Input" visible="1" slicecount="3" values="0,0,0">
+   </PIN>
+   <PIN pinname="ID" pintype="Output" visible="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="ScaleXYZ" dstnodeid="28" dstpinname="Scale XYZ" linkstyle="Bezier">
+   <LINKPOINT x="5880" y="1508">
+   </LINKPOINT>
+   <LINKPOINT x="5535" y="1508">
+   </LINKPOINT>
+   </LINK>
+   <NODE id="27" systemname="Multiply (Value)" nodename="Multiply (Value)" componentmode="Hidden" hiddenwhenlocked="0" managers="">
+   <PIN pinname="Input 2" visible="1" pintype="Input">
+   </PIN>
+   <PIN pinname="Output" visible="1" pintype="Output">
+   </PIN>
+   <BOUNDS type="Node" left="5295" top="1425" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" pintype="Configuration" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Input Count" pintype="Configuration" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="" pintype="Input" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Input 1" pintype="Input" visible="1" slicecount="1" values="0.5">
+   </PIN>
+   <PIN pinname="ID" pintype="Output" visible="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="26" srcpinname="TranslateXYZ" dstnodeid="27" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="27" srcpinname="Output" dstnodeid="28" dstpinname="Translate XYZ">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Transform Out" dstnodeid="0" dstpinname="Projector Viewport Lookup">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Output Node" dstnodeid="26" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Output Node" dstnodeid="8" dstpinname="View">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Output Node" dstnodeid="8" dstpinname="Projection">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="32" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="4590" top="2205" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4590" top="2205" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" values="1,1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="|Projector Brightness|">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="32" srcpinname="Y Output Value" dstnodeid="0" dstpinname="Projector Brightness">
+   </LINK>
+   </PATCH>

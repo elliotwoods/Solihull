@@ -1,0 +1,147 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
+   <PATCH nodename="E:\project files\Solihull\07_30 - BAM test\Sweet Spot.v4p" systemname="Sweet Spot" filename="E:\project files\Solihull\07_30 - BAM test\Sweet Spot.v4p">
+   <BOUNDS type="Window" left="-12150" top="7620" width="7965" height="4350">
+   </BOUNDS>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="0">
+   <BOUNDS type="Node" left="405" top="2835" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="405" top="2835" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="View" encoded="0">
+   </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="1">
+   <BOUNDS type="Node" left="1605" top="2835" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1605" top="2835" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Projection">
+   </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="IOBox (Node)" nodename="IOBox (Node)" componentmode="InABox" id="2">
+   <BOUNDS type="Node" left="3135" top="2865" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3135" top="2865" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="ViewProjection" encoded="0">
+   </PIN>
+   <PIN pinname="Input Node" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Translate (Transform)" nodename="Translate (Transform)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="1020" top="165" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Z" slicecount="1" values="-3">
+   </PIN>
+   </NODE>
+   <NODE systemname="Inverse (Transform)" nodename="Inverse (Transform)" componentmode="Hidden" id="5">
+   <BOUNDS type="Node" left="405" top="1425" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Source" visible="1">
+   </PIN>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="Rotate (Transform)" nodename="Rotate (Transform)" componentmode="Hidden" id="6">
+   <BOUNDS type="Node" left="1020" top="675" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Transform In" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="6" srcpinname="Transform Out" dstnodeid="5" dstpinname="Source">
+   </LINK>
+   <LINK srcnodeid="4" srcpinname="Transform Out" dstnodeid="6" dstpinname="Transform In">
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Transform Out" dstnodeid="0" dstpinname="Input Node">
+   </LINK>
+   <NODE systemname="Perspective (Transform)" nodename="Perspective (Transform)" componentmode="Hidden" id="7">
+   <BOUNDS type="Node" left="1605" top="1425" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Far Plane" slicecount="1" values="10">
+   </PIN>
+   <PIN pinname="FOV" slicecount="1" values="0.1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="Transform Out" dstnodeid="1" dstpinname="Input Node">
+   </LINK>
+   <NODE systemname="Multiply (Transform)" nodename="Multiply (Transform)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="3135" top="2265" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Transform Out" visible="1">
+   </PIN>
+   <PIN pinname="Transform In 1" visible="1">
+   </PIN>
+   <PIN pinname="Transform In 2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Transform Out" dstnodeid="2" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Transform Out" dstnodeid="8" dstpinname="Transform In 1" linkstyle="Bezier">
+   <LINKPOINT x="465" y="1965">
+   </LINKPOINT>
+   <LINKPOINT x="3135" y="1965">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="Transform Out" dstnodeid="8" dstpinname="Transform In 2" linkstyle="Bezier">
+   <LINKPOINT x="1665" y="1965">
+   </LINKPOINT>
+   <LINKPOINT x="3390" y="1965">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="CameraPreview (Transform DX9)" filename="%VVVV%\addonpack\lib\nodes\modules\Transform\CameraPreview (Transform DX9).v4p" nodename="CameraPreview (Transform DX9)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="4230" top="2190" width="1635" height="270">
+   </BOUNDS>
+   <PIN pinname="View" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Projection" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   <PIN pinname="Fill" slicecount="1" values="0">
+   </PIN>
+   <BOUNDS type="Window" left="1350" top="5190" width="10410" height="6105">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="Transform Out" dstnodeid="9" dstpinname="View" linkstyle="VHV">
+   <LINKPOINT x="465" y="1928">
+   </LINKPOINT>
+   <LINKPOINT x="4230" y="1928">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="7" srcpinname="Transform Out" dstnodeid="9" dstpinname="Projection" linkstyle="VHV">
+   <LINKPOINT x="1665" y="1928">
+   </LINKPOINT>
+   <LINKPOINT x="4755" y="1928">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="10" systemname="IOBox (Node)">
+   <BOUNDS type="Node" left="4215" top="2880" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="4215" top="2880" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Layer" encoded="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Layer" dstnodeid="10" dstpinname="Input Node">
+   </LINK>
+   <NODE nodename="IOBox (Color)" componentmode="InABox" id="11" systemname="IOBox (Color)">
+   <BOUNDS type="Node" left="5295" top="1200" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="5295" top="1200" width="2250" height="480">
+   </BOUNDS>
+   <PIN pinname="Color Input" slicecount="1" values="|1.00000,0.44327,0.44327,1.00000|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Color Output" dstnodeid="9" dstpinname="Color">
+   </LINK>
+   </PATCH>

@@ -1,3 +1,8 @@
+#Media files
+*.avi
+*.mp4
+*.dae
+
 #OS junk files
 [Tt]humbs.db
 *.DS_Store
@@ -51,6 +56,3 @@ _ReSharper*/
 
 #dll's
 *.dll
-
-#media files
-*.avi
